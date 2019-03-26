@@ -1,0 +1,26 @@
+.display-image {
+  width: 100%;
+  display: block;
+  background: url(./assets/images/angular-forms.jpg) no-repeat;
+  background-size: cover;
+  height: 20vh;
+  background-position: center center;
+}
+
+@media (min-width: 48rem) {
+  .display-image {
+    height: 16.13rem;
+    // background-position: top right;
+  }
+}
+
+@media (min-width: 64rem) {
+  .display-image {
+    height: 33vh;
+    // background-position: center center;
+  }
+}
+
+.event-dlt-img-width {
+  max-width: 50%;
+}

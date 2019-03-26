@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,600,700,900');
+@import './assets/styles/base/global';
+@import './assets/styles/base/variables';
+@import './assets/styles/modules/body';
+@import './assets/styles/modules/spinner';
+@import './assets/styles/modules/load';
+@import './assets/styles/modules/main';
+@import './assets/styles/modules/card';
+@import './assets/styles/modules/img';
+@import './assets/styles/modules/utilities';
+@import './assets/styles/modules/nav';
+@import './assets/styles/modules/table';
+@import './assets/styles/modules/formInputs';
+@import './assets/styles/modules/footer';

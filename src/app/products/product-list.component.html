@@ -1,0 +1,74 @@
+<div class="card">
+  <div class="display-image"></div>
+
+  <div class="card-header">
+    <h1>{{ pageTitle }}</h1>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid">
+      <div class="card-text">
+        <div class="row">
+          <div class="col-md-2">Filter by:</div>
+          <div class="col-md-10">
+            <input class="p-2 border bg-light" type="text" [(ngModel)]="listFilter" />
+          </div>
+        </div>
+        <div class="row" *ngIf="listFilter">
+          <div class="col-md-10 pt-1">
+            <h4>Filtered by: {{ listFilter }}</h4>
+          </div>
+        </div>
+        <div class="table-responsive mt-1">
+          <table class="table" *ngIf="products && products.length">
+            <thead>
+              <tr>
+                <th>
+                  <button class="btn btn-primary" (click)="toggleImage()">
+                    {{ showImage ? 'Hide' : 'Show' }} Image
+                  </button>
+                </th>
+                <th>Product</th>
+                <th class="invisible-in-sm">Code</th>
+                <th class="invisible-in-sm">Available</th>
+                <th class="invisible-in-sm">Price</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of filteredProducts">
+                <td>
+                  <img *ngIf="showImage" [src]="product.imageUrl" [title]="product.productName"
+                    [style.width.px]="imageWidth" [style.margin.px]="imageMargin" />
+                </td>
+                <td>
+                  <a [routerLink]="['/products', product.productId]">
+                    {{ product.productName }}
+                  </a>
+                </td>
+                <td class="invisible-in-sm">
+                  {{ product.productCode | lowercase | convertToSpace: '-' }}
+                </td>
+                <td class="invisible-in-sm">{{ product.releaseDate }}</td>
+                <td class="invisible-in-sm">{{ product.price | currency: 'AUD':'symbol':'1.2-2' }}</td>
+                <td>
+                  {{ product.starRating }} <i class="fas fa-star"></i>
+                  <!-- <td>
+                  <ns-star
+                    [rating]="product.starRating"
+                    (ratingClicked)="onRatingClicked($event)"
+                  >
+                  </ns-star>
+                </td> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>
